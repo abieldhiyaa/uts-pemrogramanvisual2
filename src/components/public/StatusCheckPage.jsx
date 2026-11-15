@@ -16,19 +16,22 @@ export default function StatusCheckPage() {
   return (
     <div className="min-h-screen bg-[#f5faf6]">
       {/* Header */}
-      <header className="no-print flex items-center justify-between border-b border-emerald-100 bg-white px-5 py-4 md:px-10">
+      <header className="no-print flex items-center justify-between border-b border-emerald-100 bg-white px-5 py-3.5 md:px-10">
         <button
           onClick={() => setRole('home')}
-          className="flex items-center gap-3 transition-opacity hover:opacity-80"
+          className="flex items-center gap-3 transition-opacity hover:opacity-85 text-left"
         >
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-800 text-white">
-            <Sprout />
+          <div className="grid h-10 w-10 place-items-center rounded-2xl border border-emerald-200 bg-white p-1 shadow-sm">
+            <img src="/logo.png" alt="Logo" className="h-full w-full object-contain" />
           </div>
-          <b>Qurrota A'yun</b>
+          <div>
+            <b className="block text-slate-900 leading-tight">SPS Qurrota A'yun</b>
+            <span className="text-[11px] text-slate-400">Kota Bogor</span>
+          </div>
         </button>
         <button
           onClick={() => setRole('home')}
-          className="text-sm font-semibold text-slate-500 transition-colors hover:text-slate-700"
+          className="text-xs font-bold text-slate-500 transition-colors hover:text-slate-800"
         >
           Beranda
         </button>

@@ -1,88 +1,40 @@
-// Data dummy awal — 5 pendaftar contoh dengan status bervariasi
-// Nomor pendaftaran baru menggunakan format QA-2027-NNN (PRD §6)
+// Data profil resmi lembaga berdasarkan formulir SPS Qurrota A'yun
+export const schoolProfile = {
+  foundation: 'YAYASAN BIRU MADANI',
+  name: 'SPS QURROTA A\'YUN',
+  level: 'Satuan PAUD Sejenis (SPS)',
+  address:
+    'Jl. K.H. Sholeh Iskandar, Perum Griya Cimanggu Indah C-14, RT.004/003, Kelurahan Kedung Badak, Kecamatan Tanah Sareal, Kota Bogor',
+  skYayasan: 'AHU-5234.AH.01.04.Tahun 2012',
+  operationalLicense: '425.74-BPPTPM-X/2012',
+  npsn: '69908898',
+  email: 'spsqurrotaayun6@gmail.com',
+  phone: '0812-3456-7890',
+  city: 'Kota Bogor',
+};
 
-export const initialApplicants = [
+export const initialUsers = [
   {
-    id: 'QA-2026-001',
-    name: 'Aisyah Putri Ramadhani',
-    birth: '2022-03-15',
-    gender: 'Perempuan',
-    address: 'Jl. Melati No. 12, RT 03/RW 05, Kel. Sukamaju, Kec. Cilandak',
-    parent: 'Dewi Lestari',
-    phone: '0812-3456-7890',
+    id: 'u-admin',
+    name: 'Administrator PPDB',
+    email: 'admin@qurrotayun.sch.id',
+    password: 'demo123',
+    role: 'admin',
+    phone: '0812-9988-7766',
+  },
+  {
+    id: 'u-dewi',
+    name: 'Dewi Lestari',
     email: 'dewi.lestari@email.com',
-    date: '12 Okt 2026',
-    status: 'Menunggu verifikasi',
-    docs: 'Lengkap',
-    age: '4 tahun',
-    schoolYear: '2027/2028',
-    files: { akta: 'akta_aisyah.pdf', kk: 'kk_aisyah.pdf', foto: 'foto_aisyah.jpg' },
-  },
-  {
-    id: 'QA-2026-002',
-    name: 'Rafi Ahmad Pratama',
-    birth: '2021-07-22',
-    gender: 'Laki-laki',
-    address: 'Jl. Kenanga No. 8, RT 01/RW 02, Kel. Margahayu, Kec. Bekasi Timur',
-    parent: 'Budi Santoso',
-    phone: '0813-2222-1188',
-    email: 'budi.s@email.com',
-    date: '12 Okt 2026',
-    status: 'Perlu perbaikan',
-    docs: 'Belum lengkap',
-    age: '5 tahun',
-    schoolYear: '2027/2028',
-    files: { akta: 'akta_rafi.pdf', kk: '', foto: '' },
-  },
-  {
-    id: 'QA-2026-003',
-    name: 'Naila Zahra Putri',
-    birth: '2022-01-10',
-    gender: 'Perempuan',
-    address: 'Jl. Dahlia No. 5, RT 07/RW 04, Kel. Jatibening, Kec. Pondok Gede',
-    parent: 'Siti Aminah',
-    phone: '0812-5555-2233',
-    email: 'siti.aminah@email.com',
-    date: '11 Okt 2026',
-    status: 'Diterima',
-    docs: 'Lengkap',
-    age: '4 tahun',
-    schoolYear: '2027/2028',
-    files: { akta: 'akta_naila.pdf', kk: 'kk_naila.pdf', foto: 'foto_naila.jpg' },
-  },
-  {
-    id: 'QA-2026-004',
-    name: 'Fathan Alfarizi',
-    birth: '2023-05-30',
-    gender: 'Laki-laki',
-    address: 'Jl. Anggrek No. 20, RT 09/RW 03, Kel. Cipinang, Kec. Jatinegara',
-    parent: 'Rina Wulandari',
-    phone: '0857-9988-1100',
-    email: 'rina.w@email.com',
-    date: '10 Okt 2026',
-    status: 'Menunggu verifikasi',
-    docs: 'Lengkap',
-    age: '3 tahun',
-    schoolYear: '2027/2028',
-    files: { akta: 'akta_fathan.pdf', kk: 'kk_fathan.pdf', foto: 'foto_fathan.jpg' },
-  },
-  {
-    id: 'QA-2026-005',
-    name: 'Kirana Safitri',
-    birth: '2021-11-08',
-    gender: 'Perempuan',
-    address: 'Jl. Mawar No. 3, RT 02/RW 06, Kel. Duren Sawit, Kec. Duren Sawit',
-    parent: 'Andi Saputra',
-    phone: '0819-7654-3210',
-    email: 'andi.saputra@email.com',
-    date: '09 Okt 2026',
-    status: 'Ditolak',
-    docs: 'Lengkap',
-    age: '5 tahun',
-    schoolYear: '2027/2028',
-    files: { akta: 'akta_kirana.pdf', kk: 'kk_kirana.pdf', foto: 'foto_kirana.jpg' },
+    password: 'user123',
+    role: 'user',
+    phone: '0812-3456-7890',
+    applicantIds: [],
   },
 ];
+
+// Kosongkan pendaftar awal agar saat demo bersih, hanya ada data baru yang dibuat
+export const initialApplicants = [];
 
 export const statuses = [
   'Menunggu verifikasi',
@@ -92,17 +44,27 @@ export const statuses = [
 ];
 
 export const defaultAnnouncement = {
-  title: 'Penerimaan Peserta Didik Baru 2027/2028',
+  title: 'Penerimaan Murid Baru SPS Qurrota A\'yun 2027/2028',
   period: '1 Oktober 2026 – 31 Januari 2027',
   quota: '60 peserta didik',
   description:
-    'Mari tumbuh, belajar, dan bermain bersama dalam lingkungan yang aman, ramah, dan menyenangkan.',
+    'Mari tumbuh, belajar, dan bermain bersama SPS Qurrota A\'yun dalam lingkungan yang ceria, islami, aman, dan menyenangkan.',
+};
+
+export const defaultAnnouncementSettings = {
+  isPublished: true,
+  title: 'Pengumuman Hasil Seleksi Murid Baru TA 2027/2028',
+  announcementDate: '15 Januari 2027',
+  reRegistrationPeriod: '1 - 10 Februari 2027',
+  reRegistrationPlace:
+    'Sekretariat SPS Qurrota A\'yun, Perum Griya Cimanggu Indah C-14, RT.004/003, Kedung Badak, Tanah Sareal, Kota Bogor (Pukul 08.00 - 12.00 WIB)',
+  contactPerson: 'Ustadzah / Panitia PPDB (0812-3456-7890)',
 };
 
 export const requiredDocs = [
-  { label: 'Akta kelahiran', key: 'akta' },
-  { label: 'Kartu Keluarga', key: 'kk' },
-  { label: 'Pas foto anak', key: 'foto' },
+  { label: 'Akta kelahiran anak', key: 'akta' },
+  { label: 'Kartu Keluarga (KK)', key: 'kk' },
+  { label: 'Pas foto anak (3x4)', key: 'foto' },
 ];
 
 export function generateId(count) {
@@ -112,25 +74,25 @@ export function generateId(count) {
 export function getStatusColor(status) {
   switch (status) {
     case 'Diterima':
-      return 'bg-emerald-100 text-emerald-800';
+      return 'bg-emerald-100 text-emerald-800 border-emerald-200';
     case 'Ditolak':
-      return 'bg-rose-100 text-rose-700';
+      return 'bg-rose-100 text-rose-700 border-rose-200';
     case 'Perlu perbaikan':
-      return 'bg-amber-100 text-amber-800';
+      return 'bg-amber-100 text-amber-800 border-amber-200';
     default:
-      return 'bg-sky-100 text-sky-800';
+      return 'bg-sky-100 text-sky-800 border-sky-200';
   }
 }
 
 export function getStatusDescription(status) {
   switch (status) {
     case 'Diterima':
-      return 'Selamat! Pendaftaran dinyatakan diterima. Silakan ikuti informasi lanjutan dari sekolah.';
+      return 'Selamat! Calon murid dinyatakan diterima di SPS Qurrota A\'yun. Silakan cek jadwal daftar ulang di menu Pengumuman.';
     case 'Perlu perbaikan':
-      return 'Mohon lengkapi atau perbaiki data/dokumen sesuai arahan pihak sekolah.';
+      return 'Mohon lengkapi atau perbaiki data/dokumen formulir sesuai catatan verifikator dari pihak sekolah.';
     case 'Ditolak':
-      return 'Pendaftaran belum dapat diterima. Silakan hubungi pihak sekolah untuk informasi lebih lanjut.';
+      return 'Pendaftaran belum dapat diterima pada periode ini. Silakan hubungi sekretariat sekolah untuk informasi lebih lanjut.';
     default:
-      return 'Data pendaftaran diterima sistem dan sedang menunggu pemeriksaan admin.';
+      return 'Formulir pendaftaran telah diterima sistem dan sedang dalam antrean verifikasi data oleh panitia PPDB.';
   }
 }

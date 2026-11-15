@@ -7,71 +7,95 @@ import {
   ChevronRight,
   ArrowRight,
   Sprout,
+  FileCheck2,
+  Megaphone,
+  FileText,
+  Settings,
 } from 'lucide-react';
 import { Badge, StatCard, Card } from '../ui/SharedComponents';
 import { statuses } from '../../data/dummyData';
 import { useApp } from '../../context/AppContext';
 
 export default function DashboardPage() {
-  const { applicants, stats, navigateAdmin } = useApp();
+  const { applicants, stats, navigateAdmin, announcementSettings } = useApp();
 
   const statCards = [
     {
       label: 'Total Pendaftar',
       value: stats.total,
-      sub: '+12% dari periode lalu',
+      sub: 'Tahun Ajaran 2027/2028',
       icon: Users,
       color: 'bg-emerald-100 text-emerald-700',
     },
     {
       label: 'Menunggu Verifikasi',
       value: stats.menunggu,
-      sub: 'Perlu ditinjau',
+      sub: 'Perlu ditinjau panitia',
       icon: Clock3,
-      color: 'bg-amber-100 text-amber-700',
+      color: 'bg-sky-100 text-sky-700',
     },
     {
-      label: 'Diterima',
+      label: 'Diterima (Lolos)',
       value: stats.diterima,
-      sub: 'Calon peserta didik',
+      sub: 'Siswa baru terkonfirmasi',
       icon: BadgeCheck,
-      color: 'bg-sky-100 text-sky-700',
+      color: 'bg-emerald-100 text-emerald-700',
     },
     {
       label: 'Perlu Perbaikan',
       value: stats.perbaikan,
-      sub: 'Tindak lanjut orang tua',
+      sub: 'Dokumen belum lengkap',
       icon: CircleAlert,
-      color: 'bg-rose-100 text-rose-700',
+      color: 'bg-amber-100 text-amber-700',
     },
   ];
 
   return (
     <>
       {/* Welcome banner */}
-      <div className="animate-fade-in-up relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-green-700 p-7 text-white md:p-9">
+      <div className="animate-fade-in-up relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-green-700 p-7 text-white md:p-9 shadow-lg">
         <div className="absolute -right-12 -top-20 h-64 w-64 rounded-full border-[34px] border-white/10" />
         <div className="absolute right-28 top-20 h-28 w-28 rounded-full bg-lime-300/10 blur-2xl" />
         <div className="relative max-w-2xl">
           <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold">
-            TAHUN AJARAN 2027/2028
+            PANEL ADMINISTRATOR PPDB
           </span>
-          <h2 className="mt-5 text-3xl font-extrabold leading-tight md:text-4xl">
+          <h2 className="mt-4 text-3xl font-extrabold leading-tight md:text-4xl">
             Selamat datang kembali,
             <br />
             Admin PPDB{' '}
-            <span className="text-lime-300">Qurrota A'yun.</span>
+            <span className="text-lime-300">PAUD Qurrota A'yun.</span>
           </h2>
-          <p className="mt-3 max-w-xl text-sm leading-6 text-emerald-50/80">
-            Pantau pendaftaran, periksa dokumen, dan kelola proses penerimaan
-            peserta didik dari satu tempat.
+          <p className="mt-3 max-w-xl text-xs leading-6 text-emerald-50/80 md:text-sm">
+            Kelola pendaftaran masuk, lakukan verifikasi dokumen pendaftar, terbitkan pengumuman kelulusan, dan cetak laporan rekapitulasi.
           </p>
-          <button
-            onClick={() => navigateAdmin('Data Pendaftar')}
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-lime-300 px-5 py-3 text-sm font-bold text-emerald-950 transition-all duration-200 hover:bg-lime-200 hover:-translate-y-0.5"
-          >
-            Kelola pendaftar <ArrowRight size={16} />
-          </button>
+
+          <div className="mt-6 flex flex-wrap gap-2.5">
+            <button
+              onClick={() => navigateAdmin('Verifikasi')}
+              className="inline-flex items-center gap-2 rounded-xl bg-lime-300 px-5 py-2.5 text-xs font-extrabold text-emerald-950 transition-all hover:bg-lime-200 hover:-translate-y-0.5"
+            >
+              <FileCheck2 size={16} /> Verifikasi Berkas ({stats.menunggu})
+            </button>
+            <button
+              onClick={() => navigateAdmin('Data Pendaftar')}
+              className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-5 py-2.5 text-xs font-bold text-white transition-all hover:bg-white/20"
+            >
+              <Users size={16} /> Pengelolaan Data
+            </button>
+            <button
+              onClick={() => navigateAdmin('Pengumuman')}
+              className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-5 py-2.5 text-xs font-bold text-white transition-all hover:bg-white/20"
+            >
+              <Megaphone size={16} /> Pengumuman Seleksi
+            </button>
+            <button
+              onClick={() => navigateAdmin('Laporan')}
+              className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-5 py-2.5 text-xs font-bold text-white transition-all hover:bg-white/20"
+            >
+              <FileText size={16} /> Cetak Laporan
+            </button>
+          </div>
         </div>
         <div className="absolute bottom-0 right-8 hidden opacity-20 lg:block">
           <Sprout size={170} />
@@ -91,24 +115,24 @@ export default function DashboardPage() {
         <Card className="animate-fade-in-up p-6">
           <div className="mb-5 flex items-center justify-between">
             <div>
-              <h3 className="font-extrabold">Pendaftar terbaru</h3>
-              <p className="mt-1 text-sm text-slate-500">
-                Aktivitas pendaftaran terkini
+              <h3 className="font-extrabold text-slate-900">Pendaftar Terbaru</h3>
+              <p className="mt-1 text-xs text-slate-500">
+                Aktivitas pendaftaran masuk yang tercatat di sistem
               </p>
             </div>
             <button
               onClick={() => navigateAdmin('Data Pendaftar')}
-              className="text-sm font-bold text-emerald-700 transition-colors hover:text-emerald-500"
+              className="text-xs font-bold text-emerald-700 transition-colors hover:text-emerald-500"
             >
               Lihat semua{' '}
-              <ChevronRight className="inline" size={16} />
+              <ChevronRight className="inline" size={15} />
             </button>
           </div>
-          <div className="space-y-4">
-            {applicants.slice(0, 4).map((a) => (
+          <div className="space-y-3">
+            {applicants.slice(0, 5).map((a) => (
               <div
                 key={a.id}
-                className="flex items-center gap-3 border-b border-slate-100 pb-4 last:border-0 last:pb-0"
+                className="flex items-center gap-3 border-b border-slate-100 pb-3 last:border-0 last:pb-0"
               >
                 <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-50 font-bold text-emerald-800">
                   {a.name
@@ -118,9 +142,9 @@ export default function DashboardPage() {
                     .join('')}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-bold">{a.name}</p>
-                  <p className="text-xs text-slate-400">
-                    {a.id} · {a.date}
+                  <p className="truncate text-xs font-bold text-slate-900">{a.name}</p>
+                  <p className="text-[11px] text-slate-400">
+                    {a.id} · Wali: {a.parent} · {a.date}
                   </p>
                 </div>
                 <Badge status={a.status} />
@@ -132,9 +156,9 @@ export default function DashboardPage() {
         {/* Process summary */}
         <Card className="animate-fade-in-up p-6" style={{ animationDelay: '100ms' }}>
           <div className="mb-5">
-            <h3 className="font-extrabold">Ringkasan proses</h3>
-            <p className="mt-1 text-sm text-slate-500">
-              Status verifikasi pendaftaran
+            <h3 className="font-extrabold text-slate-900">Ringkasan Status Seleksi</h3>
+            <p className="mt-1 text-xs text-slate-500">
+              Distribusi status verifikasi pendaftar
             </p>
           </div>
           {statuses.map((s, i) => {
@@ -146,10 +170,10 @@ export default function DashboardPage() {
               'bg-rose-400',
             ];
             return (
-              <div key={s} className="mb-5 last:mb-0">
-                <div className="mb-2 flex justify-between text-sm">
-                  <span className="text-slate-600">{s}</span>
-                  <b>{n}</b>
+              <div key={s} className="mb-4 last:mb-0">
+                <div className="mb-1.5 flex justify-between text-xs">
+                  <span className="text-slate-600 font-medium">{s}</span>
+                  <b className="text-slate-900">{n} siswa</b>
                 </div>
                 <div className="h-2 overflow-hidden rounded-full bg-slate-100">
                   <div
@@ -168,6 +192,13 @@ export default function DashboardPage() {
               </div>
             );
           })}
+
+          <div className="mt-6 rounded-2xl bg-emerald-50 p-4 border border-emerald-100 text-xs text-emerald-950">
+            <p className="font-bold">Kapasitas Kuota PPDB:</p>
+            <p className="mt-1 text-[11px] text-emerald-800">
+              Total Kuota: <strong>60 Siswa</strong> • Diterima: <strong>{stats.diterima}</strong> • Sisa: <strong>{Math.max(0, 60 - stats.diterima)} bangku</strong>
+            </p>
+          </div>
         </Card>
       </div>
     </>

@@ -31,7 +31,6 @@ export function Field({
     <label htmlFor={inputId} className="block">
       <span className="mb-2 block text-sm font-semibold text-slate-700">
         {label}
-        {required ? ' *' : ''}
       </span>
       <input
         id={inputId}
